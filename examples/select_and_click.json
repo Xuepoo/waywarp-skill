@@ -1,0 +1,28 @@
+{
+  "description": "Example invocation demonstrating a sequential Agent select-and-click operation",
+  "steps": [
+    {
+      "step": 1,
+      "purpose": "Query active hint coordinates to index interactive buttons",
+      "command": "waywarp --list-hints --format json",
+      "expected_output_fragment": "\"hints\": [ {\"label\": \"aaa\", \"x\": 45, \"y\": 25, \"screen\": 0} ]"
+    },
+    {
+      "step": 2,
+      "purpose": "Identify visual coordinate target (x=800, y=450) and query nearest grid label",
+      "command": "python3 scripts/waywarp_helper.py --nearest 800 450",
+      "expected_output": {
+        "label": "abc",
+        "x": 805,
+        "y": 448,
+        "screen": 0
+      }
+    },
+    {
+      "step": 3,
+      "purpose": "Warp cursor and click the resolved closest target label",
+      "command": "waywarp --select \"abc\"",
+      "status": "completed"
+    }
+  ]
+}
