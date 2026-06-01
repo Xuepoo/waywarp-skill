@@ -67,3 +67,51 @@ waywarp
 *   Press `Escape` to cancel and exit.
 *   Press `Backspace` to undo the last character.
 *   Press `Enter` to force selection on matching prefixes.
+
+### 6. Continuous Keyboard Normal Mode (Cursor Mode)
+To enter continuous keyboard-driven cursor control mode directly from the CLI:
+```bash
+waywarp --normal
+```
+**Controls in Normal Mode:**
+*   `h` / `j` / `k` / `l` or Arrow keys: Move cursor left/down/up/right continuously.
+*   `Shift` (hold): Multiply movement speed by 3x (Fast Acceleration).
+*   `Control` (hold): Divide movement speed by 4x (Precision Deceleration).
+*   `f` or `Return`: Perform a Mouse Left Click.
+*   `d`: Perform a Mouse Right Click.
+*   `s`: Perform a Mouse Middle Click.
+*   `u`: Scroll Up.
+*   `e`: Scroll Down.
+*   `Escape` or `q`: Exit Normal Mode gracefully.
+
+### 7. AI Visual Screen Scanner (Token-saving GUI Layout Grid)
+If you need to analyze the current screen layout dynamically, run the layout scanner (`waywarp-scanner`) to detect GUI controls and output exact coordinates in logical units (extremely token-saving, bypassing large screenshots to VLMs):
+```bash
+# 1. Download EasyOCR and YOLOv8 models locally (one-time setup)
+waywarp-scanner download-models
+
+# 2. Capture screen and output structured text-only GUI JSON grid
+waywarp-scanner scan
+```
+**JSON Output Format:**
+```json
+{
+  "screen_width": 1920,
+  "screen_height": 1080,
+  "elements": [
+    {
+      "id": 0,
+      "type": "button",
+      "text": "Login",
+      "center": [100.0, 50.0],
+      "bbox": [80.0, 40.0, 40.0, 20.0],
+      "monitor_index": 0,
+      "confidence": 0.95
+    }
+  ]
+}
+```
+You can use the returned `center` coordinates directly to warp the cursor and click:
+```bash
+waywarp --move-to 100.0 50.0 --click left
+```
