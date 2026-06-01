@@ -6,10 +6,16 @@ This skill allows AI Agent systems (like Hermes, Claude Code, or other CLI agent
 
 ## Installation
 
-To equip your AI Agent with this skill, clone this repository or copy `SKILL.md` into your agent framework's skill paths:
+To equip your AI Agent with this skill, you can install it instantly using the `skills` utility CLI, or copy it manually:
 
-### 1. Claude Code / Hermes CLI path
-Copy the `SKILL.md` file directly to your local skills directory:
+### 1. Fast Installation via CLI (Recommended)
+Add this skill directly to your Gemini / Antigravity agent CLI environment:
+```bash
+npx skills add https://github.com/Xuepoo/waywarp-skill
+```
+
+### 2. Manual Integration
+Alternatively, copy the `SKILL.md` file directly to your local skills directory:
 ```bash
 cp SKILL.md ~/.gemini/antigravity-cli/skills/waywarp/SKILL.md
 ```
