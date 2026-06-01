@@ -47,7 +47,17 @@ waywarp --move-to 800 450 --click left
 waywarp --move-to 1024 768 --click right
 ```
 
-### 4. Interactive Keyboard Overlay (Human/Co-pilot mode)
+### 4. Relative Cursor Movement & Clicks
+If you need to make relative cursor adjustments (e.g., fine-tuning position, moving in small increments, dragging relative distances):
+```bash
+# Move cursor relative to its current position by X=+50 pixels, Y=-30 pixels, and trigger left click
+waywarp --move-by 50 -30 --click left
+
+# Move cursor down by 100 pixels (dx=0, dy=100) and trigger right click
+waywarp --move-by 0 100 --click right
+```
+
+### 5. Interactive Keyboard Overlay (Human/Co-pilot mode)
 To open the transparent, fullscreen interactive overlay layout across connected monitors and grab keyboard focus:
 ```bash
 waywarp
