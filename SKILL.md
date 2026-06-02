@@ -115,3 +115,10 @@ You can use the returned `center` coordinates directly to warp the cursor and cl
 ```bash
 waywarp --move-to 100.0 50.0 --click left
 ```
+
+### 8. Integrated Desktop Vimium Visual Click Mode
+If you want to instantly click on a visual GUI element (button, text field, link) without sending a heavy screenshot to a VLM:
+```bash
+waywarp --scan
+```
+This single command automatically captures the Wayland screen, detects all interactive elements, overlays unique prefix-free characters over them, matches the keystroke, and left-clicks the matched target!
